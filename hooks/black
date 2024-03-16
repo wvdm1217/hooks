@@ -1,12 +1,17 @@
 #!/bin/bash
 
-staged_files=$(git diff --cached --name-only --diff-filter=d | grep .py$)
+function run_black {
+    if ! command -v black &> /dev/null; then
+        echo "Black is not installed. Please install it and try again."
+        return 1
+    fi
 
-if [[ $staged_files = "" ]]; then
-    exit 0
-fi
+    staged_files=$(git diff --cached --name-only --diff-filter=d | grep .py$)
 
-black $staged_files
-git add $staged_files
+    if [[ $staged_files = "" ]]; then
+        return 0
+    fi
 
-exit 0
+    black $staged_files
+    git add $staged_files
+}
