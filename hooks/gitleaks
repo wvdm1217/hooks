@@ -5,5 +5,5 @@ function run_gitleaks {
         echo "Gitleaks is not installed. Please install it and try again."
         return 1
     fi
-    gitleaks --path=$(git rev-parse --show-toplevel)
+    gitleaks detect
 }
