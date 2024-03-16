@@ -1,0 +1,12 @@
+#!/bin/bash
+
+staged_files=$(git diff --cached --name-only --diff-filter=d | grep .py$)
+
+if [[ $staged_files = "" ]]; then
+    exit 0
+fi
+
+black $staged_files
+git add $staged_files
+
+exit 0
