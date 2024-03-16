@@ -4,7 +4,15 @@
 ignoreblack=$(git config --type=bool hooks.ignoreblack)
 
 if [ "$ignoreblack" != "true" ]; then
-	pwd
 	source .git/hooks/black
 	run_black
+fi
+
+# Add gitleaks to the pre-commit hook
+
+ignoregitleaks=$(git config --type=bool hooks.ignoregitleaks)
+
+if [ "$ignoregitleaks" != "true" ]; then
+	source .git/hooks/gitleaks
+    run_gitleaks
 fi
