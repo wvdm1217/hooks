@@ -1,9 +1,10 @@
-#!/bin/sh
+#!/bin/bash
 
 # Add black python linter to the pre-commit hook
 ignoreblack=$(git config --type=bool hooks.ignoreblack)
 
 if [ "$ignoreblack" != "true" ]; then
+	pwd
 	source .git/hooks/black
 	run_black
 fi
