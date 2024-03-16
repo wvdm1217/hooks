@@ -1,0 +1,20 @@
+{
+	"name": "Python 3",
+	"build":{
+		"dockerfile": "./../Dockerfile"
+	},
+	// "postCreateCommand": "pip3 install --user -r requirements.txt",
+	"postStartCommand": "cp -r hooks/* .git/hooks/",
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"ms-azuretools.vscode-docker",
+				"GitHub.copilot",
+				"GitHub.copilot-chat",
+				"ms-python.vscode-pylance",
+				"ms-python.python",
+				"ms-python.debugpy"
+			]
+		}
+	}
+}
